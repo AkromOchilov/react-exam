@@ -1,0 +1,67 @@
+.sidebar {
+	max-width: 330px;
+	color: #474747;
+	padding-right: 109px;
+
+	&__title {
+		font-size: 24px;
+		line-height: 36px;
+		margin: 0;
+		margin-bottom: 36px;
+	}
+
+	&__text {
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 24px;
+		margin: 0;
+		margin-bottom: 25px;
+	}
+
+	&__btn {
+		font-family: 'Roboto Mono';
+		display: flex;
+		align-items: center;
+		border: none;
+		background-color: transparent;
+		font-size: 12px;
+		line-height: 14px;
+		text-transform: uppercase;
+		margin-bottom: 50px;
+
+		&::after {
+			content: '>';
+			display: flex;
+			width: 4;
+			height: 8;
+			padding: 6px 8px;
+			background-color: #f4f4f4;
+			border-radius: 3px;
+			margin-left: 16px;
+		}
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&__item {
+		& + & {
+			margin-left: 25px;
+		}
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.sidebar {
+		padding-right: 0;
+		width: 100%;
+		margin: 0 auto;
+		order: 1;
+		margin-bottom: 90px;
+	}
+} ;

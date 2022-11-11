@@ -1,0 +1,100 @@
+.content {
+	&__heading {
+		margin: 0;
+		margin-bottom: 58px;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 36px;
+		color: #474747;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__news {
+		padding-bottom: 15px;
+		border-bottom: 1px solid #dfdfdf;
+		margin-bottom: 45px;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	&__news__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 12px;
+		line-height: 16px;
+		color: #777777;
+		margin-bottom: 20px;
+	}
+
+	&__news__title {
+		margin: 0;
+		margin-bottom: 10px;
+		font-size: 23px;
+		line-height: 28px;
+		color: #474747;
+	}
+
+	&__news__text {
+		margin: 0;
+		font-size: 19px;
+		line-height: 28px;
+		color: #474747;
+		margin-bottom: 20px;
+	}
+
+	&__news__time {
+		display: flex;
+		align-items: center;
+		font-size: 12px;
+		line-height: 16px;
+		color: #777777;
+
+		&::before {
+			content: '';
+			display: flex;
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+			background-image: url('./../../Assets/Images/clock.svg');
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+	&__pagination {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-bottom: 120px;
+		a {
+			padding: 10px 8px;
+			text-decoration: none;
+			color: dimgray;
+			&:hover {
+				color: red;
+			}
+		}
+	}
+	&__btn {
+		&:hover {
+			border: 1px solid #474747;
+		}
+		border: 1px solid transparent;
+		padding: 10px 11px;
+		border-radius: 3px;
+		background: #f4f4f4;
+		margin: 0 2px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.content {
+		&__heading {
+			margin-bottom: 40px;
+		}
+	}
+}
