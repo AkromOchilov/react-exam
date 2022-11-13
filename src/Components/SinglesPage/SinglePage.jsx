@@ -6,15 +6,19 @@ import getPosts from './../../Lib/getPosts';
 
 const SinglePage = () => {
 	let { categoryId } = useParams();
-	console.log(categoryId);
-	let { id } = useParams();
-	id = Number(id);
-	console.log(id);
+	let url = useParams();
 	let [info, setInfo] = useState([]);
+	console.log(info);
 
 	let handle = async (id) => {
 		let data = await getPosts(id + '/posts');
-		setInfo(data);
+		let one = {};
+		data.forEach((item) => {
+			if (item.id === url.id) {
+				one = item;
+			}
+		});
+		setInfo(one);
 	};
 
 	useEffect(() => {
@@ -26,39 +30,34 @@ const SinglePage = () => {
 			<div className={styles.container}>
 				<div className={styles.single__left}>
 					<button className={styles.single__left__like}>
-						{info[id - 0].likes}
+						{info.likes}
 					</button>
 					<button className={styles.single__left__share}>
-						{info[id - 0].shares}
+						{info.shares}
 					</button>
 				</div>
 				<div className={styles.single__content}>
 					<span className={styles.single__category}>
-						{info[id - 0].categoryId}
+						{info.categoryId}
 					</span>
-					<h2 className={styles.single__title}>
-						{info[id - 0].title}
-					</h2>
+					<h2 className={styles.single__title}>{info.title}</h2>
 					<div className={styles.single__times}>
 						<time className={styles.single__created}>
-							{dayjs(info[id - 0].createdAt).format(
-								'MMMM D, YYYY',
-							)}
+							{dayjs(info.createdAt).format('MMMM D, YYYY')}
 						</time>
+						|
 						<time className={styles.single__read}>
-							{info[id - 0].readTime} minutes read
+							{info.readTime} minutes read
 						</time>
 					</div>
 					<img
-						src={info[id - 0].image}
-						alt={info[id - 0].description}
+						src={info.image}
+						alt={info.description}
 						className={styles.single__img}
 						width={736}
 						height={352}
 					/>
-					<p className={styles.single__text}>
-						{info[id - 0].content}
-					</p>
+					<p className={styles.single__text}>{info.content}</p>
 				</div>
 			</div>
 		</section>

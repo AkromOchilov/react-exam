@@ -1,19 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import styles from './Content.module.scss';
 import getPosts from './../../Lib/getPosts';
 import dayjs from 'dayjs';
-import { Context } from './../Context/Locatization';
 import arrowLeft from './../../Assets/Images/left.svg';
 import arrowRight from './../../Assets/Images/right.svg';
 
 const Content = () => {
-	let { id } = useContext(Context);
-	console.log(id);
+	let { categoryId } = useParams();
 	let [info, setInfo] = useState([]);
 	console.log(info);
-
-	let [article, setArticle] = useState(null);
+	categoryId = categoryId ? categoryId : '1';
 
 	let handle = async (id) => {
 		let data = await getPosts(id + '/posts');
@@ -21,8 +18,8 @@ const Content = () => {
 	};
 
 	useEffect(() => {
-		handle(id);
-	}, [id]);
+		handle(categoryId);
+	}, [categoryId]);
 
 	return (
 		<div className={styles.content}>
@@ -34,8 +31,7 @@ const Content = () => {
 							<Link
 								to={`/category/${item.categoryId}/${item.id}`}
 								key={item.id}
-								className={styles.content__news}
-								onClick={() => setArticle(info[item.id])}>
+								className={styles.content__news}>
 								<div className={styles.content__news__header}>
 									<time className={styles.content__time}>
 										{dayjs(item.createdAt).format(

@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Auth = ({ children }) => {
 	let navigator = useNavigate();
-	const [token, setToken] = useState(localStorage.getItem('token'));
+	const [token] = useState(localStorage.getItem('token'));
 
 	useEffect(() => {
 		if (!token) {
 			navigator('/login');
 		}
-	}, [token]);
+	}, [token, navigator]);
 
 	return <>{children}</>;
 };

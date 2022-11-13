@@ -1,22 +1,16 @@
 import React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import Header from './../Header/Header';
+import Main from './../Main/Main';
 import Footer from './../Footer/Footer';
 
 const Layout = () => {
-	let navigator = useNavigate();
-	let storage = window.localStorage;
+	let { categoryId } = useParams();
 	return (
 		<>
-			{storage.getItem('token') ? (
-				<>
-					<Header />
-					<Outlet />
-					<Footer />
-				</>
-			) : (
-				navigator('/login')
-			)}
+			<Header />
+			{categoryId ? <Outlet /> : <Main />}
+			<Footer />
 		</>
 	);
 };
